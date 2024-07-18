@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> cool graphic (rotating 3d cube)</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            perspective: 1000px;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: rotateCube 10s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #ff6b6b, #f06595, #cc5de8);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .face:nth-child(1) { transform: translateZ(250px); }
+        .face:nth-child(2) { transform: rotateY(90deg) translateZ(250px); }
+        .face:nth-child(3) { transform: rotateY(180deg) translateZ(250px); }
+        .face:nth-child(4) { transform: rotateY(-90deg) translateZ(250px); }
+        .face:nth-child(5) { transform: rotateX(90deg) translateZ(250px); }
+        .face:nth-child(6) { transform: rotateX(-90deg) translateZ(250px); }
+
+        @keyframes rotateCube {
+            0% { transform: rotateX(0) rotateY(0); }
+            25% { transform: rotateX(90deg) rotateY(0); }
+            50% { transform: rotateX(90deg) rotateY(90deg); }
+            75% { transform: rotateX(180deg) rotateY(90deg); }
+            100% { transform: rotateX(180deg) rotateY(180deg); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 300px;
+                height: 300px;
+            }
+            .face {
+                width: 300px;
+                height: 300px;
+            }
+            .face .text {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cube">
+            <div class="face">H</div>
+            <div class="face">A</div>
+            <div class="face">C</div>
+            <div class="face">K</div>
+            <div class="face">C</div>
+            <div class="face">L</div>
+            <div class="face">U</div>
+            <div class="face">B</div>
+        </div>
+    </div>
+</body>
+</html>
